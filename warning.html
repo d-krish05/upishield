@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>UPI Shield • High Risk Warning</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Warning screen specific styles */
+        .warning-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        
+        .warning-card {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 36px;
+            padding: 32px 24px;
+            border: 2px solid rgba(220, 38, 38, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(220,38,38,0.3), 0 0 0 2px rgba(220,38,38,0.2) inset;
+            width: 100%;
+        }
+        
+        .warning-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(220, 38, 38, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.7); transform: scale(1.05); }
+            100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.4); }
+        }
+        
+        .warning-icon i {
+            font-size: 48px;
+            color: #DC2626;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #DC2626;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .warning-subtitle {
+            text-align: center;
+            color: #1E3A8A;
+            font-weight: 500;
+            margin-bottom: 28px;
+            font-size: 16px;
+        }
+        
+        .reasons-list {
+            background: rgba(255,255,255,0.5);
+            border-radius: 28px;
+            padding: 20px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+        
+        .reason-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(220,38,38,0.1);
+        }
+        
+        .reason-item:last-child {
+            border-bottom: none;
+        }
+        
+        .reason-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .reason-icon i {
+            color: #DC2626;
+            font-size: 16px;
+        }
+        
+        .reason-text {
+            font-weight: 600;
+            color: #1E3A8A;
+            font-size: 16px;
+        }
+        
+        .reason-desc {
+            font-size: 13px;
+            color: #4F46E5;
+            margin-left: auto;
+            opacity: 0.8;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .btn-cancel {
+            flex: 1;
+            background: #DC2626;
+            border: none;
+            border-radius: 60px;
+            padding: 18px 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 12px 24px -8px rgba(220,38,38,0.5);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-proceed {
+            flex: 1;
+            background: linear-gradient(135deg, #2563EB, #7C3AED);
+            border: none;
+            border-radius: 60px;
+            padding: 18px 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 12px 24px -8px rgba(37,99,235,0.5);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0.9;
+        }
+        
+        .btn-cancel:hover, .btn-proceed:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-cancel:active, .btn-proceed:active {
+            transform: scale(0.97);
+        }
+        
+        .security-note {
+            text-align: center;
+            margin-top: 24px;
+            color: #4F46E5;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .security-note i {
+            color: #2563EB;
+        }
+        
+        /* Decorative elements */
+        .bg-alert {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: rgba(220,38,38,0.05);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+            top: 20%;
+            right: -50px;
+        }
+        
+        .bg-alert-2 {
+            bottom: 10%;
+            left: -50px;
+            background: rgba(37,99,235,0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame" style="position: relative; overflow: hidden;">
+        <!-- Decorative background elements -->
+        <div class="bg-alert"></div>
+        <div class="bg-alert bg-alert-2"></div>
+        
+        <!-- Header with logo -->
+        <div class="header" style="position: relative; z-index: 2;">
+            <div class="header-left">
+                <img src="logo.png" alt="UPI Shield" style="width: 40px; height: 40px; border-radius: 14px; box-shadow: 0 8px 16px rgba(37,99,235,0.3);">
+                <span class="app-name">UPI Shield</span>
+            </div>
+            <div class="header-right">
+                <i class="fas fa-shield" style="color: #DC2626;"></i>
+            </div>
+        </div>
+
+        <!-- Warning Content -->
+        <div class="warning-container">
+            <div class="warning-card">
+                <!-- Warning Icon -->
+                <div class="warning-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                
+                <!-- Title -->
+                <h1>High Risk Detected</h1>
+                <div class="warning-subtitle">This transaction shows fraud indicators.</div>
+                
+                <!-- Reasons List - Properly Aligned -->
+                <div class="reasons-list">
+                    <div class="reason-item">
+                        <div class="reason-icon">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <span class="reason-text">Sender flagged</span>
+                        <span class="reason-desc">Blacklisted</span>
+                    </div>
+                    
+                    <div class="reason-item">
+                        <div class="reason-icon">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <span class="reason-text">Amount unusual</span>
+                        <span class="reason-desc">vs. pattern</span>
+                    </div>
+                    
+                    <div class="reason-item">
+                        <div class="reason-icon">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <span class="reason-text">New device location</span>
+                        <span class="reason-desc">Unknown</span>
+                    </div>
+                </div>
+                
+                <!-- Button Group - Side by Side -->
+                <div class="button-group">
+                    <button class="btn-cancel" onclick="window.location.href='cancel.html'">
+                        <i class="fas fa-ban"></i> Cancel Payment
+                    </button>
+                    <button class="btn-proceed" onclick="window.location.href='processing.html'">
+                        <i class="fas fa-shield"></i> Proceed Anyway
+                    </button>
+                </div>
+                
+                <!-- Security Note -->
+                <div class="security-note">
+                    <i class="fas fa-robot"></i>
+                    <span>AI recommends blocking this transaction</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

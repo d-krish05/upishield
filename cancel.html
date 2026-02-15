@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>UPI Shield • Payment Cancelled</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Cancel screen specific styles */
+        .cancel-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 20px 0;
+        }
+        
+        .cancel-card {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 36px;
+            padding: 36px 24px;
+            border: 2px solid rgba(37, 99, 235, 0.2);
+            box-shadow: 0 20px 40px -10px rgba(37,99,235,0.2);
+            width: 100%;
+            margin-bottom: 24px;
+        }
+        
+        .cancel-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
+            animation: pulseRed 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseRed {
+            0% { box-shadow: 0 0 20px rgba(220,38,38,0.2); }
+            50% { box-shadow: 0 0 40px rgba(220,38,38,0.5); transform: scale(1.05); }
+            100% { box-shadow: 0 0 20px rgba(220,38,38,0.2); }
+        }
+        
+        .cancel-icon i {
+            font-size: 56px;
+            color: #DC2626;
+        }
+        
+        h1 {
+            font-size: 34px;
+            font-weight: 800;
+            color: #1E3A8A;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .cancel-subtitle {
+            text-align: center;
+            color: #DC2626;
+            font-weight: 500;
+            margin-bottom: 30px;
+            font-size: 16px;
+            background: rgba(220,38,38,0.08);
+            padding: 8px 16px;
+            border-radius: 60px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+        }
+        
+        /* Info Card */
+        .info-card {
+            background: rgba(255,255,255,0.5);
+            border-radius: 28px;
+            padding: 24px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+        
+        .amount-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0 16px 0;
+            border-bottom: 2px solid rgba(37,99,235,0.1);
+            margin-bottom: 8px;
+        }
+        
+        .amount-label {
+            font-weight: 600;
+            color: #1E3A8A;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .amount-label i {
+            color: #2563EB;
+            font-size: 22px;
+            width: 28px;
+        }
+        
+        .amount-value {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2563EB, #7C3AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Safety Items - Properly Aligned */
+        .safety-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(37,99,235,0.08);
+        }
+        
+        .safety-item:last-child {
+            border-bottom: none;
+        }
+        
+        .safety-check {
+            width: 36px;
+            height: 36px;
+            background: rgba(22, 163, 74, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        .safety-check i {
+            color: #16A34A;
+            font-size: 18px;
+        }
+        
+        .safety-text {
+            font-weight: 500;
+            color: #1E3A8A;
+            font-size: 16px;
+            flex: 1;
+        }
+        
+        .safety-status {
+            background: rgba(22, 163, 74, 0.1);
+            color: #16A34A;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 40px;
+            min-width: 85px;
+            text-align: center;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+        
+        /* Button Group - Side by Side */
+        .button-group {
+            display: flex;
+            gap: 16px;
+            margin: 24px 0 16px;
+        }
+        
+        .btn-dashboard {
+            flex: 1;
+            background: linear-gradient(135deg, #2563EB, #7C3AED);
+            border: none;
+            border-radius: 60px;
+            padding: 18px 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 15px 30px -8px rgba(37,99,235,0.5);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-history {
+            flex: 1;
+            background: transparent;
+            border: 2px solid #2563EB;
+            border-radius: 60px;
+            padding: 18px 12px;
+            color: #2563EB;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-dashboard:hover, .btn-history:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-dashboard:active, .btn-history:active {
+            transform: scale(0.97);
+        }
+        
+        .btn-history:hover {
+            background: #2563EB;
+            color: white;
+        }
+        
+        /* Security Footer */
+        .security-note {
+            text-align: center;
+            color: #4F46E5;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        
+        .security-note i {
+            color: #2563EB;
+        }
+        
+        /* Decorative elements */
+        .bg-cancel {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: rgba(220,38,38,0.03);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+            bottom: 5%;
+            right: -40px;
+        }
+        
+        .bg-cancel-2 {
+            top: 10%;
+            left: -40px;
+            background: rgba(37,99,235,0.03);
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame" style="position: relative; overflow: hidden;">
+        <!-- Decorative background elements -->
+        <div class="bg-cancel"></div>
+        <div class="bg-cancel bg-cancel-2"></div>
+        
+        <!-- Header with logo -->
+        <div class="header" style="position: relative; z-index: 2;">
+            <div class="header-left">
+                <img src="logo.png" alt="UPI Shield" style="width: 40px; height: 40px; border-radius: 14px; box-shadow: 0 8px 16px rgba(37,99,235,0.3);">
+                <span class="app-name">UPI Shield</span>
+            </div>
+            <div class="header-right">
+                <i class="fas fa-shield" style="color: #2563EB;"></i>
+            </div>
+        </div>
+
+        <!-- Cancel Content -->
+        <div class="cancel-container">
+            <!-- Cancel Card -->
+            <div class="cancel-card">
+                <!-- X Icon (not shield) -->
+                <div class="cancel-icon">
+                    <i class="fas fa-times"></i>
+                </div>
+                
+                <!-- Title -->
+                <h1>Payment Cancelled</h1>
+                <div class="cancel-subtitle">
+                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                    Transaction stopped for your safety
+                </div>
+                
+                <!-- Info Card with Safety Points -->
+                <div class="info-card">
+                    <!-- Amount Row - NO "Rs" text, just "Total deducted" -->
+                    <div class="amount-row">
+                        <span class="amount-label">
+                            <i class="fas fa-rupee-sign"></i> Total deducted
+                        </span>
+                        <span class="amount-value">₹0.00</span>
+                    </div>
+                    
+                    <!-- Safety Items - Properly Aligned with X on icon -->
+                    <div class="safety-item">
+                        <div class="safety-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="safety-text">Account safe</span>
+                        <span class="safety-status">Protected</span>
+                    </div>
+                    
+                    <div class="safety-item">
+                        <div class="safety-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="safety-text">Bank not charged</span>
+                        <span class="safety-status">Secure</span>
+                    </div>
+                    
+                    <div class="safety-item">
+                        <div class="safety-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="safety-text">Data secure</span>
+                        <span class="safety-status">Encrypted</span>
+                    </div>
+                </div>
+                
+                <!-- Button Group - Side by Side -->
+                <div class="button-group">
+                    <button class="btn-dashboard" onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-home"></i> Dashboard
+                    </button>
+                    <button class="btn-history" onclick="window.location.href='history.html'">
+                        <i class="fas fa-history"></i> History
+                    </button>
+                </div>
+                
+                <!-- Security Footer -->
+                <div class="security-note">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>Your money is safe with UPI Shield</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

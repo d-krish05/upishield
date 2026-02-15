@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Shield • Settings</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="phone-frame">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <img src="logo.png" alt="UPI Shield" style="width: 40px; height: 40px; border-radius: 14px;">
+                <span class="app-name">UPI Shield</span>
+            </div>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="content">
+            <!-- Profile Card -->
+            <div class="glass-card" style="display: flex; align-items: center; gap: 16px; padding: 20px; margin-bottom: 24px;">
+                <div style="width: 60px; height: 60px; border-radius: 30px; background: linear-gradient(135deg, #2563EB, #7C3AED); display: flex; align-items: center; justify-content: center; color: white; font-size: 30px;">👤</div>
+                <div>
+                    <div style="font-weight: 700; font-size: 20px; color: #1E3A8A;">Rahul Sharma</div>
+                    <span style="color: #4F46E5;">rahul@okaxis</span>
+                </div>
+            </div>
+
+            <!-- Settings Items - Even Height -->
+            <div class="settings-item" onclick="window.location.href='profile.html'">
+                <i class="fas fa-user-cog" style="width: 24px; color: #2563EB;"></i>
+                <span style="font-weight: 500;">Profile Settings</span>
+                <i class="fas fa-chevron-right" style="margin-left: auto; color: #2563EB;"></i>
+            </div>
+
+            <div class="settings-item" onclick="window.location.href='devices.html'">
+                <i class="fas fa-tablet-alt" style="width: 24px; color: #2563EB;"></i>
+                <span style="font-weight: 500;">Linked Devices</span>
+                <i class="fas fa-chevron-right" style="margin-left: auto; color: #2563EB;"></i>
+            </div>
+
+            <div class="settings-item" onclick="window.location.href='notifications.html'">
+                <i class="fas fa-bell" style="width: 24px; color: #2563EB;"></i>
+                <span style="font-weight: 500;">Notifications</span>
+                <i class="fas fa-chevron-right" style="margin-left: auto; color: #2563EB;"></i>
+            </div>
+
+            <div class="settings-item" style="cursor: default;">
+                <i class="fas fa-robot" style="width: 24px; color: #2563EB;"></i>
+                <span style="font-weight: 500;">AI Shield Settings</span>
+                <label style="margin-left: auto;">
+                    <input type="checkbox" id="aiToggle" checked style="width: 20px; height: 20px;">
+                </label>
+            </div>
+
+            <div class="settings-item" onclick="window.location.href='privacy.html'">
+                <i class="fas fa-lock" style="width: 24px; color: #2563EB;"></i>
+                <span style="font-weight: 500;">Privacy & Data</span>
+                <i class="fas fa-chevron-right" style="margin-left: auto; color: #2563EB;"></i>
+            </div>
+
+            <div class="settings-item" onclick="window.location.href='pin.html'">
+                <i class="fas fa-key" style="width: 24px; color: #2563EB;"></i>
+                <span style="font-weight: 500;">Change PIN</span>
+                <i class="fas fa-chevron-right" style="margin-left: auto; color: #2563EB;"></i>
+            </div>
+
+            <div class="settings-item" onclick="window.location.href='help.html'">
+                <i class="fas fa-headset" style="width: 24px; color: #2563EB;"></i>
+                <span style="font-weight: 500;">Help Center</span>
+                <i class="fas fa-chevron-right" style="margin-left: auto; color: #2563EB;"></i>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation - Fixed at Bottom -->
+        <div class="bottom-nav">
+            <span class="nav-item" onclick="window.location.href='dashboard.html'"><i class="fas fa-home"></i> Home</span>
+            <span class="nav-item" onclick="window.location.href='history.html'"><i class="fas fa-history"></i> History</span>
+            <span class="nav-item" onclick="window.location.href='analytics.html'"><i class="fas fa-chart-line"></i> Analytics</span>
+            <span class="nav-item active" onclick="window.location.href='settings.html'"><i class="fas fa-cog"></i> Settings</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

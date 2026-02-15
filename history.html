@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Shield • History</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="phone-frame">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <img src="logo.png" alt="UPI Shield" style="width: 40px; height: 40px; border-radius: 14px;">
+                <span class="app-name">UPI Shield</span>
+            </div>
+            <div class="header-right">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="content">
+            <!-- Filter Chips -->
+            <div class="filter-chips">
+                <span class="filter-chip active" onclick="filterHistory('all')">All</span>
+                <span class="filter-chip" onclick="filterHistory('low')">Low</span>
+                <span class="filter-chip" onclick="filterHistory('medium')">Medium</span>
+                <span class="filter-chip" onclick="filterHistory('high')">High</span>
+            </div>
+
+            <!-- History List - Even Cards -->
+            <div class="activity-item" data-risk="low">
+                <div class="activity-left">
+                    <div class="activity-icon"><i class="fas fa-store"></i></div>
+                    <div class="activity-details">
+                        <span class="activity-name">Merchant XYZ</span>
+                        <span class="activity-meta">Today, 10:24 AM</span>
+                    </div>
+                </div>
+                <div class="activity-right">
+                    <span class="activity-amount">₹2,450</span>
+                    <span class="risk-badge low-risk">Low</span>
+                </div>
+            </div>
+
+            <div class="activity-item" data-risk="high">
+                <div class="activity-left">
+                    <div class="activity-icon"><i class="fas fa-user-secret"></i></div>
+                    <div class="activity-details">
+                        <span class="activity-name">Unknown Sender</span>
+                        <span class="activity-meta">Today, 09:15 AM</span>
+                    </div>
+                </div>
+                <div class="activity-right">
+                    <span class="activity-amount">₹15,000</span>
+                    <span class="risk-badge high-risk">High</span>
+                </div>
+            </div>
+
+            <div class="activity-item" data-risk="low">
+                <div class="activity-left">
+                    <div class="activity-icon"><i class="fas fa-pizza-slice"></i></div>
+                    <div class="activity-details">
+                        <span class="activity-name">Food Delivery</span>
+                        <span class="activity-meta">Yesterday, 8:30 PM</span>
+                    </div>
+                </div>
+                <div class="activity-right">
+                    <span class="activity-amount">₹380</span>
+                    <span class="risk-badge low-risk">Low</span>
+                </div>
+            </div>
+
+            <div class="activity-item" data-risk="medium">
+                <div class="activity-left">
+                    <div class="activity-icon"><i class="fas fa-box"></i></div>
+                    <div class="activity-details">
+                        <span class="activity-name">New Merchant</span>
+                        <span class="activity-meta">Yesterday, 2:15 PM</span>
+                    </div>
+                </div>
+                <div class="activity-right">
+                    <span class="activity-amount">₹8,500</span>
+                    <span class="risk-badge medium-risk">Medium</span>
+                </div>
+            </div>
+
+            <div class="activity-item" data-risk="low">
+                <div class="activity-left">
+                    <div class="activity-icon"><i class="fas fa-train"></i></div>
+                    <div class="activity-details">
+                        <span class="activity-name">Metro Card</span>
+                        <span class="activity-meta">Yesterday, 8:45 AM</span>
+                    </div>
+                </div>
+                <div class="activity-right">
+                    <span class="activity-amount">₹120</span>
+                    <span class="risk-badge low-risk">Low</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation - Fixed at Bottom -->
+        <div class="bottom-nav">
+            <span class="nav-item" onclick="window.location.href='dashboard.html'"><i class="fas fa-home"></i> Home</span>
+            <span class="nav-item active" onclick="window.location.href='history.html'"><i class="fas fa-history"></i> History</span>
+            <span class="nav-item" onclick="window.location.href='analytics.html'"><i class="fas fa-chart-line"></i> Analytics</span>
+            <span class="nav-item" onclick="window.location.href='settings.html'"><i class="fas fa-cog"></i> Settings</span>
+        </div>
+    </div>
+
+    <script>
+        function filterHistory(risk) {
+            // Update active chip
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter items
+            document.querySelectorAll('.activity-item').forEach(item => {
+                if (risk === 'all' || item.dataset.risk === risk) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
